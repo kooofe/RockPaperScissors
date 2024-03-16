@@ -1,6 +1,6 @@
 let scoreComputer = 0
 let scorePlayer = 0
-function playGame() {
+function playGame(playerSelection) {
     function playRound(playerSelection, computerSelection) {
         playerSelection = playerSelection.toLowerCase();
         computerSelection = computerSelection.toLowerCase();
@@ -13,16 +13,23 @@ function playGame() {
         else if (playerSelection === 'rock' && computerSelection === 'scissors'){scorePlayer++; return "You Win! Rock beats Scissors"; }
         else return "Please choose between Rock, Paper, Scissors";
     }
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Please enter the card u choose (Rock, Paper, Scissors):")
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-    scorePlayer > scoreComputer ? console.log("Player's Win!") : console.log("Computer's Win!")
+    console.log(playRound(playerSelection,getComputerChoice()))
 }
 function getComputerChoice() {
     let hand = ['Rock', 'Paper', 'Scissors']
     return hand[Math.floor(Math.random() * 3)]
 }
 
-playGame()
+const btnRock = document.querySelector(".rock")
+const btnPaper = document.querySelector(".paper")
+const btnScissors = document.querySelector(".scissors")
+
+btnRock.addEventListener("click", () => {
+    playGame('rock')
+});
+btnPaper.addEventListener("click", () => {
+    playGame('paper')
+});
+btnScissors.addEventListener("click", () => {
+    playGame('scissors')
+});
