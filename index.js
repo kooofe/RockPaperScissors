@@ -1,4 +1,3 @@
-let roundInGame = 5
 let scoreComputer = 0
 let scorePlayer = 0
 
